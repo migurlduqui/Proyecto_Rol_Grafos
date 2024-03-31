@@ -1,0 +1,28 @@
+.square {
+    position: absolute;
+    width: 240px; /* Set the width */
+    height: 90px; /* Set the height */
+    border: 1px solid #000;
+    background-color: aliceblue;
+    user-select: none;
+}
+
+.square img {
+    width: 40%;
+    height: 100%;
+    float: left; /* Float the image to the left */
+    margin-right: 10px; /* Add some margin to separate the image from the text */
+}
+
+.square div {
+    overflow: hidden; /* Clear the float */
+}
+
+/* Adjust font styles and other properties as needed */
+.square div:nth-child(2) {
+    font-weight: bold;
+}
+
+.square div:nth-child(3) {
+    font-style: italic;
+}
