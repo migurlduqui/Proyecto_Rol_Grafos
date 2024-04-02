@@ -7,6 +7,7 @@ export class Node {
         this.subtittle = subtittle;
         this.image = "default.png";
         this.Parent = document.createElement("div");
+        this.file = "static.html";
 
     }
 
@@ -32,9 +33,34 @@ export class Node {
         subtittle.contentEditable = true;
         subtittle.innerText = this.subtittle;
 
-        this.Parent.append(image,Title,subtittle);
+        //Button for HTml
+        var Buttom = document.createElement("button");
+        Buttom.className = "forIframe";
+        Buttom.innerText = "+";
+
+        this.Parent.append(image,Title,subtittle, Buttom);
         return this.Parent;
     }
+
+    //handle Iframe creation
+    openText(){
+        if(document.getElementById("open") == null){
+        var text = document.createElement("iframe");
+        text.id = "open";
+        text.width = 300;
+        text.heigh = 200;
+        text.src = this.file;
+        
+        this.Parent.append(text);
+        var close = document.createElement("button");
+        close.innerText ="x";
+        close.addEventListener("click", () => {
+            text.remove();
+            close.remove()});
+        this.Parent.append(close);}
+    }
+
+
     // Method to add mouse event listeners to the node
     addEventListeners() {
         this.Parent.addEventListener("mousedown", (event) => {
@@ -64,6 +90,9 @@ export class Node {
                 image.src = newImagePath; // Update image source
             }
         });
+
+        const Buttom = this.Parent.querySelector("button");
+        Buttom.addEventListener("click", () => {this.openText();})
 
 
     }
